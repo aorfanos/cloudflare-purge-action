@@ -8,4 +8,4 @@ runs:
       shell: bash
 branding:
   color: orange
-  icon: trash-2
+  icon: cloud
