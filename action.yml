@@ -1,4 +1,4 @@
-name: "Cloudflare Purge Cache"
+name: "Cloudflare Purge Cache GitHub Action"
 description: "Purge a zone's cache via the Cloudflare API"
 author: aorfanos
 runs:
