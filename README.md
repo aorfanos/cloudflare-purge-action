@@ -5,38 +5,32 @@
 
 All sensitive variables should be [set as encrypted secrets](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) in the action's configuration.
 
-
 ### `workflow.yml` Example
 
-Place in a `.yml` file such as this one in your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions)
-
+#### Run using CloudFlare auth token
 ```yaml
-name: Deploy my website
-on: push
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-
-    # Put steps here to build your site, deploy it to a service, etc.
-
     - name: Purge cache
       uses: aorfanos/cloudflare-purge-action@main
-      inputs:
-        # Zone is required by both authentication methods
-        cf_zone_name: ${{ secrets.CLOUDFLARE_ZONE }}
-
-        cf_token: ${{ secrets.CLOUDFLARE_TOKEN }}
-        # ...or:
-        cf_email_addr: ${{ secrets.CLOUDFLARE_EMAIL }}
-        cf_api_key: ${{ secrets.CLOUDFLARE_KEY }}
+      env:
+        CF_TOKEN: ${{ secrets.CF_TOKEN }}
+        CF_ZONE_NAME: ${{ secrets.CF_ZONE_NAME }}
 ```
+
+#### Run using legacy CloudFlare API key
+```yaml
+    - name: Purge cache
+      uses: aorfanos/cloudflare-purge-action@main
+      env:
+        CF_EMAIL_ADDR: ${{ secrets.CF_EMAIL_ADDR }}
+        CF_API_KEY: ${{ secrets.CF_API_KEY }}
+        CF_ZONE_NAME: ${{ secrets.CF_ZONE_NAME }}
+```
+
 
 ### Purging specific files
 
-To purge only specific files, you can pass an array of **fully qualified URLs** via a fourth environment variable named `PURGE_URLS`. Unfortunately, Cloudflare doesn't support wildcards (unless you're on the insanely expensive Enterprise plan) so in order to purge a folder, you'd need to list every file in that folder. It's probably safer to leave this out and purge everything, but in case you want really to, the syntax is as follows:
+To purge only specific files, you can pass an array of **fully qualified URLs** via a fourth environment variable named `CF_PURGE_URLS`.
 
 ```yaml
-PURGE_URLS: '["https://jarv.is/style.css", "https://jarv.is/favicon.ico"]'
+CF_PURGE_URLS: '["https://aorfanos.com/styles.css","https://aorfanos.com/style.css"]'
 ```
