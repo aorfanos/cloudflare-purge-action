@@ -6,7 +6,7 @@ runs:
   steps:
     - run: python -m pip install requests
       shell: bash
-    - run: python ${{ github.action_path }}/cloudflare.py
+    - run: INPUT_CF_API_KEY=${{ inputs.cf_api_key}} INPUT_CF_EMAIL_ADDR=${{ inputs.cf_email_addr}} INPUT_CF_ZONE_NAME=${{ inputs.cf_zone_name }} python ${{ github.action_path }}/cloudflare.py
       shell: bash
 branding:
   color: orange
