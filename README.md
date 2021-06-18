@@ -10,7 +10,7 @@ All sensitive variables should be [set as encrypted secrets](https://help.github
 #### Run using CloudFlare auth token
 ```yaml
     - name: Purge cache
-      uses: aorfanos/cloudflare-purge-action@v1.0.1
+      uses: aorfanos/cloudflare-purge-action@v1.0.2
       env:
         CF_TOKEN: ${{ secrets.CF_TOKEN }}
         CF_ZONE_NAME: ${{ secrets.CF_ZONE_NAME }}
@@ -19,7 +19,7 @@ All sensitive variables should be [set as encrypted secrets](https://help.github
 #### Run using legacy CloudFlare API key
 ```yaml
     - name: Purge cache
-      uses: aorfanos/cloudflare-purge-action@v1.0.1
+      uses: aorfanos/cloudflare-purge-action@v1.0.2
       env:
         CF_EMAIL_ADDR: ${{ secrets.CF_EMAIL_ADDR }}
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
