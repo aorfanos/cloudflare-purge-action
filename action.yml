@@ -9,22 +9,3 @@ runs:
 branding:
   color: orange
   icon: trash-2
-inputs:
-  cf_api_key:
-    description: CloudFlare global API key
-    required: false
-  cf_email_addr:
-    description: CloudFlare mail address
-    required: false
-  cf_token:
-    description: CloudFlare new format API token
-    required: false
-  cf_zone_id:
-    description: CloudFlare zone ID
-    required: false
-  cf_zone_name:
-    description: CloudFlare zone name
-    required: false
-  cf_purge_urls:
-    description: List of URLs to purge
-    required: false
