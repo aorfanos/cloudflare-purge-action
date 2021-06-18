@@ -4,8 +4,6 @@ author: jakejarvis
 runs:
   using: "composite"
   steps:
-    - run: python -m pip install requests
-      shell: bash
     - run: python ${{ github.action_path }}/cloudflare.py
       shell: bash
 branding:
