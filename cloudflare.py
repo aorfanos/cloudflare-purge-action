@@ -5,11 +5,11 @@ import sys
 
 CF_API_BASE = "https://api.cloudflare.com/client/v4"
 
-cf_api_key = os.environ.get("INPUT_CF_API_KEY")
-cf_email_addr = os.environ.get("INPUT_CF_EMAIL_ADDR")
-cf_token = os.environ.get("INPUT_CF_TOKEN")
-cf_zone_name = os.environ.get("INPUT_CF_ZONE_NAME")
-cf_purge_urls = os.environ.get("INPUT_CF_PURGE_URLS")
+cf_api_key = os.environ.get("CF_API_KEY")
+cf_email_addr = os.environ.get("CF_EMAIL_ADDR")
+cf_token = os.environ.get("CF_TOKEN")
+cf_zone_name = os.environ.get("CF_ZONE_NAME")
+cf_purge_urls = os.environ.get("CF_PURGE_URLS")
 
 # use legacy global API key if cf_token input is not defined
 if cf_token is None:
