@@ -31,7 +31,7 @@ if cf_purge_urls is None:
     }
 else:
     data = {
-        "files": f'"{cf_purge_urls}"',
+        "files": [f'"{cf_purge_urls}"'],
     }
 
 def ZoneNameToID(zoneName: str):
