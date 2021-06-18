@@ -1,0 +1,32 @@
+name: "Cloudflare Purge Cache"
+description: "Purge a zone's cache via the Cloudflare API"
+author: jakejarvis
+runs:
+  using: "composite"
+  steps:
+    - run: python -m pip install requests
+      shell: bash
+    - run: python ${{ github.action_path }}/cloudflare.py
+      shell: bash
+branding:
+  color: orange
+  icon: trash-2
+inputs:
+  cf_api_key:
+    description: CloudFlare global API key
+    required: true
+  cf_email_addr:
+    description: CloudFlare mail address
+    required: true
+  cf_token:
+    description: CloudFlare new format API token
+    required: true
+  cf_zone_id:
+    description: CloudFlare zone ID
+    required: false
+  cf_zone_name:
+    description: CloudFlare zone name
+    required: false
+  cf_purge_urls:
+    description: List of URLs to purge
+    required: false
