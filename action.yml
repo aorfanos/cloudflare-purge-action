@@ -1,6 +1,6 @@
 name: "Cloudflare Purge Cache"
 description: "Purge a zone's cache via the Cloudflare API"
-author: jakejarvis
+author: aorfanos
 runs:
   using: "composite"
   steps:
