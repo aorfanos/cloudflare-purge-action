@@ -1,7 +1,10 @@
 # GitHub Action to Purge Cloudflare Cache  🗑️ 
 
+A fast GitHub action (python+composite run) to purge CloudFlare cache. 
 
 ## Usage
+
+If you are running it from a custom container (e.g. not `ubuntu-latest` or similar provided by GitHub), this container needs to have python installed.
 
 All sensitive variables should be [set as encrypted secrets](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) in the action's configuration.
 
