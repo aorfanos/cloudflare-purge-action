@@ -10,6 +10,9 @@ cf_email_addr = os.environ.get("CF_EMAIL_ADDR")
 cf_token = os.environ.get("CF_TOKEN")
 cf_zone_name = os.environ.get("CF_ZONE_NAME")
 cf_purge_urls = os.environ.get("CF_PURGE_URLS")
+cf_purge_hosts = os.environ.get("CF_PURGE_HOSTS")
+cf_purge_prefixes = os.environ.get("CF_PURGE_PREFIXES")
+cf_purge_tags = os.environ.get("CF_PURGE_TAGS")
 
 # use legacy global API key if cf_token input is not defined
 if cf_token is None:
@@ -24,14 +27,25 @@ else:
         "Authorization": f"Bearer {cf_token}",
     }
 
-# purge everything from zone or purge specific URLs
-if cf_purge_urls is None:
+if cf_purge_urls is not None:
     data = {
-        "purge_everything": True,
+        "files": [f'"{cf_purge_urls}"']
+    }
+elif cf_purge_hosts is not None:
+    data = {
+        "hosts": [f'"{cf_purge_hosts}"']
+    } 
+elif cf_purge_prefixes is not None:
+    data = {
+        "prefixes": [f'"{cf_purge_prefixes}"']
+    }
+elif cf_purge_tags is not None:
+    data = {
+        "tags": [f'"{cf_purge_tags}"']
     }
 else:
     data = {
-        "files": [f'"{cf_purge_urls}"'],
+        "purge_everything": True,
     }
 
 def ZoneNameToID(zoneName: str):
